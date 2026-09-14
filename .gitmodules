@@ -1,0 +1,6 @@
+[submodule "Module 02/diffusion-joke-cpp-lab"]
+	path = Module 02/diffusion-joke-cpp-lab
+	url = https://github.com/jwal-7/diffusion-joke-cpp-lab.git
+[submodule "diffusion-joke-cpp-lab"]
+	path = diffusion-joke-cpp-lab
+	url = https://github.com/jwal-7/diffusion-joke-cpp-lab.git
