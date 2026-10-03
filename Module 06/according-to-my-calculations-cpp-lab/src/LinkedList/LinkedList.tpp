@@ -1,4 +1,4 @@
-#include "LinkedList.hpp"
+#include "../LinkedList/LinkedList.hpp"
 
 template<typename T>
 LinkedList<T>::LinkedList(void) : currentNode{nullptr}, HEAD{nullptr}, TAIL{nullptr} {}

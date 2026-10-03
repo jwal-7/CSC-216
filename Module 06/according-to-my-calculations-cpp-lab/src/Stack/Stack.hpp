@@ -1,11 +1,10 @@
 #ifndef STACKSTRUCTURE_H
 #define STATCKSTRUCTURE_H
 
-#include "LinkedList.hpp"
-#include "LinkedList.tpp"
+#include "../LinkedList/LinkedList.hpp"
+#include "../LinkedList/LinkedList.tpp"
 
-template<typename T>
-class Stack 
+template<typename T> class Stack 
 {
     LinkedList<T> list;
 
@@ -25,6 +24,6 @@ class Stack
     T peek(void);
 };
 
-#include "Stack.tpp"
+#include "../Stack/Stack.tpp"
 
 #endif

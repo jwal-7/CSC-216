@@ -98,6 +98,6 @@ template<typename T> class LinkedList
     void diceRoll(void);
 };
 
-#include "LinkedList.tpp"
+#include "../LinkedList/LinkedList.tpp"
 
 #endif

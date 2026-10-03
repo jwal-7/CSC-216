@@ -1,11 +1,10 @@
 #ifndef QUEUESTRUCTURE_H
 #define QUEUESTRUCTURE_H
 
-#include "LinkedList.hpp"
-#include "LinkedList.tpp"
+#include "../LinkedList/LinkedList.hpp"
+#include "../LinkedList/LinkedList.tpp"
 
-template<typename T>
-class Queue  
+template<typename T> class Queue  
 {
     LinkedList<T> list;
 
@@ -25,6 +24,6 @@ class Queue
     T peek(void);
 };
 
-#include "Queue.tpp"
+#include "../Queue/Queue.tpp"
 
 #endif

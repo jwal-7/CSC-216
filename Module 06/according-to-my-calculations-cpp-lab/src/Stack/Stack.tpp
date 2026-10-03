@@ -1,4 +1,4 @@
-#include "Stack.hpp"
+#include "../Stack/Stack.hpp"
 
 template<typename T>
 Stack<T>::Stack(void) : list{nullptr} 
@@ -9,7 +9,7 @@ Stack<T>::Stack(void) : list{nullptr}
 template<typename T>
 Stack<T>::Stack(T firstItem) : list{nullptr} 
 {
-    list = LinkedList<T>(T first Item);
+    list = LinkedList<T>(T firstItem);
 }
 
 template<typename T>
@@ -26,6 +26,7 @@ T Stack<T>::pop(void)
     return returnData; // return data that's to be used
 }
 
+template<typename T>
 T Stack<T>::peek(void)
 {
     return list.HEAD->getValue();
