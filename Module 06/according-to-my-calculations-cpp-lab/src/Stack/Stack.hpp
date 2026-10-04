@@ -9,10 +9,10 @@ template<typename T> class Stack
     LinkedList<T> list;
 
     // Intiatlize with no items
-    Stack Stack(void);
+    Stack(void);
 
     // Intialize with 1 item
-    Stack Stack(T firstItem);
+    Stack(T firstItem);
 
     // push onto the stack following FILO / LIFO
     void push(T item);

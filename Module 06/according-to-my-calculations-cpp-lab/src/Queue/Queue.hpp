@@ -9,10 +9,10 @@ template<typename T> class Queue
     LinkedList<T> list;
 
     // Intiatlize with no items
-    Queue Queue(void);
+    Queue(void);
 
     // Intialize with 1 item
-    Queue Queue(T firstItem);
+    Queue(T firstItem);
 
     // push onto the queue following FIFO
     void push(T item);
