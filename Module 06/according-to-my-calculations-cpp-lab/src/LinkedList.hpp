@@ -14,22 +14,13 @@ template<typename T> class LinkedList
 
         public: 
         // Intializer with no data within it
-        Node(void) : data(), nextNode() {
-            nextNode = this;
-        } 
+        Node(void) : data(), nextNode(nullptr) {} 
 
         // Intializer with data declaration
-        Node(T startingData) : data(startingData), nextNode() {
-            nextNode = this;
-        }
+        Node(T startingData) : data(startingData), nextNode(nullptr) {}
 
         // destructor
-        ~Node(void) 
-        {
-            delete [] nextNode;
-            // nextNode == nullptr;
-            data = dynamic_cast<T>(0);
-        }
+        ~Node(void) {}
 
         // Returns pointer to next node
         Node* next(void) {
@@ -85,6 +76,15 @@ template<typename T> class LinkedList
     // Gets value at current node
     const T getValue(void);
 
+    // Returns the HEAD pointer
+    Node* getHEAD(void);
+
+    // Returns the TAIL pointer
+    Node* getTAIL(void);
+
+    // Returns the currentNode pointer
+    Node* getCurrent(void);
+
     // Sets value at current node
     void setValue(T data);
 
@@ -98,6 +98,6 @@ template<typename T> class LinkedList
     void diceRoll(void);
 };
 
-#include "../LinkedList/LinkedList.tpp"
+#include "LinkedList.tpp"
 
 #endif

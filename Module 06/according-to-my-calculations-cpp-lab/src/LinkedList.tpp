@@ -1,4 +1,3 @@
-#include "../LinkedList/LinkedList.hpp"
 
 template<typename T>
 LinkedList<T>::LinkedList(void) : currentNode{nullptr}, HEAD{nullptr}, TAIL{nullptr} {}
@@ -16,12 +15,9 @@ LinkedList<T>::LinkedList(T data) : currentNode{nullptr}, HEAD{nullptr}, TAIL{nu
 template<typename T>
 LinkedList<T>::~LinkedList(void) 
 {
-    delete [] currentNode;
-    // currentNode = nullptr;
-    delete [] HEAD;
-    // HEAD = nullptr;
-    delete [] TAIL;
-    // TAIL = nullptr;
+    while (HEAD != nullptr) {
+        removeHead();
+    }
 }
 
 template<typename T>
@@ -68,7 +64,7 @@ void LinkedList<T>::insertTail(T data)
     newNode->setNext(HEAD); // list newNode to rest of list
     tail->setNext(newNode); // list rest of list to newNode
     */
-    newNode->setNext(nulltpr) // set newNode to nullptr since end of list
+    newNode->setNext(nullptr); // set newNode to nullptr since end of list
     TAIL->setNext(newNode); // connect rest of list to newNode (new Tail)
     TAIL = newNode; // newNode is now new TAIL    
 }
@@ -82,10 +78,35 @@ void LinkedList<T>::append(T data)
 template<typename T>
 void LinkedList<T>::removeHead(void) 
 {
+    if (HEAD == nullptr) return;
+
     Node* toBeDeleted = HEAD; // mark for deleted
-    HEAD = HEAD->nextNode;  // unlink current head from list via incrementing
-    ~toBeDeleted; // call destructor on previous HEAD to make sure there's no memory leak
+    HEAD = HEAD->next();  // unlink current head from list via incrementing
+    delete toBeDeleted; // delete previous HEAD to make sure there's no memory leak
+    if (HEAD == nullptr) {
+        TAIL = nullptr;
+        currentNode = nullptr;
+    }
 }
+
+template<typename T>
+LinkedList<T>::Node* LinkedList<T>::getHEAD(void) 
+{
+    return HEAD;
+}
+
+template<typename T>
+LinkedList<T>::Node* LinkedList<T>::getTAIL(void) 
+{
+    return TAIL;
+}
+
+template<typename T>
+LinkedList<T>::Node* LinkedList<T>::getCurrent(void) 
+{
+    return currentNode;
+}
+
 
 template<typename T>
 const T LinkedList<T>::getValue(void) 

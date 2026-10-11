@@ -1,13 +1,16 @@
 #ifndef STACKSTRUCTURE_H
 #define STATCKSTRUCTURE_H
 
-#include "../LinkedList/LinkedList.hpp"
-#include "../LinkedList/LinkedList.tpp"
+#include "LinkedList.hpp"
 
 template<typename T> class Stack 
 {
+    private:
+
     LinkedList<T> list;
 
+    public:
+    
     // Intiatlize with no items
     Stack(void);
 
@@ -22,8 +25,11 @@ template<typename T> class Stack
 
     // return the data of the item but DO NOT remove it from the stack
     T peek(void);
+
+    // Checks if the pointers of the list are all nullptr, T = empty, F = non empty
+    bool isEmpty(void);
 };
 
-#include "../Stack/Stack.tpp"
+#include "Stack.tpp"
 
 #endif

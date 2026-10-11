@@ -1,13 +1,16 @@
 #ifndef QUEUESTRUCTURE_H
 #define QUEUESTRUCTURE_H
 
-#include "../LinkedList/LinkedList.hpp"
-#include "../LinkedList/LinkedList.tpp"
+#include "LinkedList.hpp"
 
 template<typename T> class Queue  
 {
+    private:
+
     LinkedList<T> list;
 
+    public:
+    
     // Intiatlize with no items
     Queue(void);
 
@@ -22,8 +25,11 @@ template<typename T> class Queue
 
     // return the data of the front item but DO NOT remove it from the queue
     T peek(void);
+
+    // Checks if the pointers of the list are all nullptr, T = empty, F = non empty
+    bool isEmpty(void);
 };
 
-#include "../Queue/Queue.tpp"
+#include "Queue.tpp"
 
 #endif

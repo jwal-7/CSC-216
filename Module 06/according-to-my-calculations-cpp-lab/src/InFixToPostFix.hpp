@@ -1,17 +1,17 @@
 #ifndef INFIXTOPOSTFIX_CLASS
 #define INFIXTOPOSTFIX_CLASS
 
-#include "../Stack/Stack.hpp"
-#include "../Queue/Queue.hpp"
+#include "Stack.hpp"
+#include "Queue.hpp"
 
-template<typename T> class InFixToPostFix 
+class InFixToPostFix 
 {
     private: // -----------------------------------------------------------
 
-    T expStorage; // practically temp varaible to allow user to store an expression out of convenience (pre or postfix)
+    std::string expStorage; // practically temp varaible to allow user to store an expression out of convenience (pre or postfix)
     bool isPostFix = false; 
-    Stack<T> operators // only ops
-    Queue<T> finalExpression // holds numbers and ops in order
+    Stack<char> operators; // only ops
+    Queue<char> finalExpression; // holds numbers and ops in order
 
     int opPrec(char op)
     { // higher number = higher precendece
@@ -26,9 +26,10 @@ template<typename T> class InFixToPostFix
     }
 
     // Meant to be the raw underlying convert logic all others are wrappers with differnt args
-    T rawConvert(T inputPrefixExpression, bool storeValueFlag);
+    std::string rawConvert(std::string inputPrefixExpression, bool storeValueFlag);
 
-    T exportExpression(Queue<T> expression);
+    // Exports the postfix expression to match the original data type to be a portable value
+    std::string exportExpression(Queue<char>& expression);
 
     public: // -----------------------------------------------------------
 
@@ -36,20 +37,19 @@ template<typename T> class InFixToPostFix
     InFixToPostFix(void);
 
     // Intializes a converter with an expression stored and still empty stack and queue
-    InFixToPostFix(T prefixExpression);
+    InFixToPostFix(std::string prefixExpression);
     
     // Converts expression stored and returns it but does NOT affect current stored expression
-    T convert(void);
+    std::string convert(void);
 
-    // Same thing as convert but with input incase expression is not stored
-    T convert(T prefixExpression);
+    // Same thing as convert but with input without expression being stored
+    std::string convert(std::string prefixExpression);
 
     // Same as convert() but does store the converted expression
-    T convertAndStore(void);
+    std::string convertAndStore(void);
 
     // Same as convert(T pE) and stores expression
-    T convertAndStore(T prefixExpression);
+    std::string convertAndStore(std::string prefixExpression);
 };
 
-#include "../InFixToPostFix/InFixToPostFix.tpp"
 #endif

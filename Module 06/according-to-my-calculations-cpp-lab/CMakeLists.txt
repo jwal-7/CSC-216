@@ -15,7 +15,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(factorial_test tests/factorial_test.cpp src/factorial.cpp)
-add_executable(main main.cpp src/factorial.cpp)
+add_executable(post_fix_calc_test tests/post_fix_calc_test.cpp src/PostFixCalc.cpp src/InFixToPostFix.cpp)
+add_executable(main main.cpp src/PostFixCalc.cpp src/InFixToPostFix.cpp)
 
-target_link_libraries(factorial_test PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(post_fix_calc_test PRIVATE Catch2::Catch2WithMain)
