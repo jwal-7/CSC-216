@@ -1,32 +1,76 @@
 #include <vector>
-template<typename T>
-class ArrayBinaryTree {
+#include <iostream>
+template<typename T> class ArrayBinaryTree {
     
-    protected:
+    private:
     
-    vector<T> data;
+    std::vector<T> data;
     int size{0};
+    size_t tail{0};
 
     public:
 
-    ArrayBinaryTree<T> () {}
+    ArrayBinaryTree(void) : data(), size(), tail()  {}
 
-    void get_size const { return size; }
+    int get_size() const { return size; }
 
     bool is_empty() const { return size == 0; }
 
-    void swap(int i, int j) 
+    void swap(size_t i, size_t j) // swapping second onto first position and vice versa
     {
-        
+        T temp;
+        temp = data[i];
+        data[i] = data[j];
+        data[j] = temp; 
     }
 
-    size_t add_to_end(T data) 
+    size_t left(size_t parent) // read as left of parent 
     {
-        data.insert(T data);
+        return (2 * parent) + 1;
+    }
+
+    size_t right(size_t parent) // read as right of parent 
+    {
+        return (2 * parent) + 2;
+    }
+
+    void add_to_end(T input) 
+    {
+        data.push_back(input);
+        size++;
+        tail = data.size() - 1;
     }
     
-    size_t return_end() 
+    T end_value() 
     {
-        return end = data.size() - data.maxsize();
+        return data.back();
+    }
+
+    size_t end() 
+    {
+        return tail;
+    }
+
+    T root_value() 
+    {
+        return data.front();
+    }
+
+    size_t root() 
+    {
+        return 0; // root is always going to be the 0th index of the array
+    }
+
+    T value_at(size_t i) 
+    {
+        return data[i];
+    }
+
+    void remove() 
+    {
+        swap(root(), end());
+        data.pop_back();
+        size--;
+        tail = data.size() - 1;
     }
 };
