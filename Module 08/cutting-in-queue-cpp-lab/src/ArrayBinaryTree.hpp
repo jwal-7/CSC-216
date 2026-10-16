@@ -1,5 +1,9 @@
 #include <vector>
 #include <iostream>
+
+#ifndef ARRAYBINARYTREE_LIBRARY
+#define ARRAYBINARYTREE_LIBRARY
+
 template<typename T> class ArrayBinaryTree {
     
     private:
@@ -29,9 +33,24 @@ template<typename T> class ArrayBinaryTree {
         return (2 * parent) + 1;
     }
 
+    bool has_left(size_t parent) 
+    {
+        return (static_cast<int>(left(parent)) < size); 
+    }
+
     size_t right(size_t parent) // read as right of parent 
     {
         return (2 * parent) + 2;
+    }
+
+    size_t has_right(size_t parent) 
+    {
+        return (static_cast<int>(right(parent)) < size);
+    }
+
+    size_t parent(size_t child) 
+    {
+        return (child - 1) / 2;
     }
 
     void add_to_end(T input) 
@@ -74,3 +93,5 @@ template<typename T> class ArrayBinaryTree {
         tail = data.size() - 1;
     }
 };
+
+#endif
