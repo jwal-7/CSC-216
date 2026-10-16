@@ -12,6 +12,8 @@ class JobQueue
 
     public:
 
+    JobQueue(void) {} 
+
     void insert(Job input) 
     {
         h.insert(input);
