@@ -26,4 +26,14 @@ public:
   {
     return priority;
   }
-}
+
+  bool operator>(const Job &j) 
+  {
+    return priority > j.priority;
+  }
+
+  bool operator<(const Job &j) 
+  {
+    return priority < j.priority;
+  }
+};

@@ -15,11 +15,11 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(factorial_test tests/factorial_test.cpp src/factorial.cpp)
-add_executable(main main.cpp src/factorial.cpp)
+add_executable(main main.cpp src/JobQueue.hpp)
 add_executable(tree_test tests/tree_test.cpp src/ArrayBinaryTree.hpp)
 add_executable(heap_test tests/heap_test.cpp src/Heap.hpp)
+add_executable(jobqueue_test tests/jobqueue_test.cpp src/JobQueue.hpp)
 
-target_link_libraries(factorial_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(tree_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(heap_test PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(jobqueue_test PRIVATE Catch2::Catch2WithMain)

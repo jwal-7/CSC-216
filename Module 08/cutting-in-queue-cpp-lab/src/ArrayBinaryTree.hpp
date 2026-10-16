@@ -22,8 +22,7 @@ template<typename T> class ArrayBinaryTree {
 
     void swap(size_t i, size_t j) // swapping second onto first position and vice versa
     {
-        T temp;
-        temp = data[i];
+        T temp = data[i];
         data[i] = data[j];
         data[j] = temp; 
     }
@@ -85,12 +84,17 @@ template<typename T> class ArrayBinaryTree {
         return data[i];
     }
 
-    void remove() 
+    void remove(size_t i) 
     {
-        swap(root(), end());
+        swap(i, end());
         data.pop_back();
         size--;
         tail = data.size() - 1;
+    }
+
+    void remove()
+    {
+        remove(root());
     }
 };
 

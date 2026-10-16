@@ -27,8 +27,6 @@ TEST_CASE( "sample test case" ) {
     REQUIRE(tree.end() == 3);
     REQUIRE(tree.value_at(3) == 77);
 
-    
-
     tree.swap(3, tree.root());
 
     REQUIRE(tree.root_value() == 77);
@@ -50,7 +48,7 @@ TEST_CASE( "sample test case" ) {
     REQUIRE(!tree.has_left(2));
     REQUIRE(!tree.has_right(2));
     REQUIRE(!tree.is_empty());
-    
+
 }
 
 
