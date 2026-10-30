@@ -2,14 +2,10 @@
 #include <fstream>
 #include <sstream>
 
-#include "src/factorial.hpp"
+#include "src/hashmap.hpp"
 
 int main() {
-  std::cout << "The factorial of 5 is " << factorial(5) << std::endl;
-
-  std::cout << __cplusplus << std::endl;
-
-
+  /*
   std::ifstream book1("../plays/romeo_and_juliet.txt");
   std::stringstream buffer1;
   buffer1 << book1.rdbuf();
@@ -23,5 +19,5 @@ int main() {
   std::string resource_book = buffer2.str();
 
   std::cout << resource_book << std::endl;
-
+  */
 }

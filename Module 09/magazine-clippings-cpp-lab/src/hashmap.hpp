@@ -11,6 +11,7 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include <stdexcept>
 
 template <typename Key, typename Value>
 class Hashmap 
@@ -101,13 +102,11 @@ private:
     int table_size = 29;       // number of buckets
 
     int hash(Key k) const { return ((21 * k) + 4); } 
-    int hash(Key k) { return ((21 * k) + 4); } 
     std::vector<Bucket> table;
 
     // ------------- CLASS FUNCTIONS ------------------------------
 
     int get_index(const Key& key) const {return hash(static_cast<int>(key)) % table_size; }
-    int get_index(const Key& key) {return hash(static_cast<int>(key)) % table_size; }
 
     void clear() {
         for (Bucket b : table) {
@@ -127,7 +126,7 @@ private:
             table_size = new_table_size;
             count = 0;
 
-            // something needs to happen here just dont know what
+            table.resize(new_table_size);
 
             for (Entry e: buffer) {
                 table.put(e.key(), e.value());
@@ -146,6 +145,8 @@ public:
 
     Hashmap() { create_table(); }
 
+    
+
     const auto find(const Key& k) const 
     {
         const Bucket& bucket = table[get_index(k)];
@@ -158,14 +159,20 @@ public:
     }
 
     const Value& get(const Key& k) const {
-        return find(k)->value();
+        const Bucket& bucket = table[get_index(k)];
+        auto pos = bucket.find(k);
+            if (pos == bucket.end()) {
+                throw std::range_error("Value was not found in range of bucket");
+            } else {
+                return pos->value();
+            }
     }
 
-    Value& get(Key& k) {
+    Value& get(const Key& k) {
         Bucket& bucket = table[get_index(k)];
         auto pos = bucket.find(k);
             if (pos == bucket.end()) {
-                return bucket.end();
+                throw std::range_error("Value was not found in range of bucket");
             } else {
                 return pos->value();
             }
@@ -174,10 +181,9 @@ public:
 
     auto put(const Key& k, const Value& v) 
     {
-        int old_size = table[k].size();
         Bucket& bucket = table[get_index(k)];
         if (bucket.put(k,v)) {
-           count += (table[k].size() - old_size);
+           count++;
         }
         return bucket.find(k);
     }
@@ -201,6 +207,21 @@ public:
         return table_size;
     }
 
+    bool contains(const Key& k) const {
+            const Bucket& bucket = table[get_index(k)];
+            return bucket.contains(k);
+        }
+
+    
+    Value& operator[](const Key& k) 
+    {
+        if (!this->contains(k)) {
+            put(k, 0);
+            return get(k);
+        } else {
+            return get(k);
+        }
+    }
 };
 
 #endif
