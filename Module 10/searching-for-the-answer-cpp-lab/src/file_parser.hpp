@@ -25,16 +25,22 @@ public:
     {
         std::vector<std::string> result;
         std::string temp = {};
-        for (int i = 0; i < s.size(); i++) {
-            if (std::isalnum(s[i])) {
-                temp += (s[i]);
+        for (size_t i = 0; i < s.size(); i++) {
+            if ( (std::isalnum(s[i])) ) {
+                temp += (tolower(s[i]));
+            } 
+            else if (s[i] == '-') {
+                temp += s[i];
             }
-            
-            if (!std::isalnum(s[i + 1])) {
+            else if (!temp.empty()) {
                 result.push_back(temp);
                 temp.clear();
-                continue;
             }
+            
+            /* if ( (!std::isalnum(s[i + 1])) && (s[i + 1] != '-') )  {
+            if ( !temp.empty() )  {
+                result.push_back(temp);
+            }*/
         }
         return result;
     }

@@ -11,15 +11,14 @@ TEST_CASE( "can convert a file into a string and then split it up" ) {
 
     std::string s = parse.convertFileToString("../texts/test_file.txt");
 
-    REQUIRE(s == "This is a test file and string.");
+    REQUIRE(s == "This is a test-file and string.\n"); // idk why vscode INSISTS on adding a newline everytime i open this file and it's so annoying
 
     std::vector<std::string> v = parse.splitUpString(s);
 
-    REQUIRE(v[0] == "This");
+    REQUIRE(v[0] == "this");
     REQUIRE(v[1] == "is");
     REQUIRE(v[2] == "a");
-    REQUIRE(v[3] == "test");
-    REQUIRE(v[4] == "file");
-    REQUIRE(v[5] == "and");
-    REQUIRE(v[6] == "string");
+    REQUIRE(v[3] == "test-file");
+    REQUIRE(v[4] == "and");
+    REQUIRE(v[5] == "string");
 }
