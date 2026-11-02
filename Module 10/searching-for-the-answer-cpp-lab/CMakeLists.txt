@@ -15,13 +15,15 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(main main.cpp src/factorial.cpp)
+add_executable(main main.cpp src/file_parser.hpp src/file_indexer.hpp src/file_writer.hpp)
 add_executable(parser_test tests/parser_test.cpp src/file_parser.hpp)
 add_executable(index_map_test tests/index_map_test.cpp src/file_index_map.hpp)
 add_executable(indexer_test tests/indexer_test.cpp src/file_indexer.hpp)
 add_executable(vector_wrapper_test tests/vector_wrapper_test.cpp src/vector_wrapper.hpp)
+add_executable(writer_test tests/writer_test.cpp src/file_writer.hpp src/file_indexer.hpp src/file_parser.hpp)
 
 target_link_libraries(parser_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(index_map_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(indexer_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(vector_wrapper_test PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(writer_test PRIVATE Catch2WithMain)
