@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "hashmap.hpp"
 
 class ComparisonHashmap 
@@ -10,7 +11,6 @@ public:
     bool can_create_note(std::string note, std::string articles)
     {   
         Hashmap<char,int> articles_map;
-        
 
         for(char c: articles) {
             if (isgraph(c)) {

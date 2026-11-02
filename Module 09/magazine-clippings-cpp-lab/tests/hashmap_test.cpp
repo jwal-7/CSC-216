@@ -36,6 +36,4 @@ TEST_CASE("basic test case") {
     map['o']++;
 
     REQUIRE(map.get('o') == 1);
-    
-
 }
