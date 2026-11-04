@@ -1,0 +1,17 @@
+Need to Implement:
+- change from ABT DS to AVL DS 
+    changing insert and removal functions(?)
+- rebalance tree
+- insert
+    insert value into tree
+    rebalance tree afterwards
+- delete
+    remove value from tree
+    rebalance tree afterwards
+- seralize
+    output nodes in tree as csv
+    be sure to represent null node
+optional:
+- deserealize
+    take output from seralize and
+    construct tree from it
