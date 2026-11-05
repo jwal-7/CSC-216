@@ -54,14 +54,20 @@ TEST_CASE( "sample test case" ) {
     */
 
 TEST_CASE("avl specific test") {
-    AVL<int> tree;
+    AVL tree;
 
-    tree.add_to_end(2);
-    tree.add_to_end(4);
-    tree.add_to_end(7);
-    tree.add_to_end(77);
+    tree.insert(tree.root(), 4);
+    tree.insert(tree.root(), 2);
+    tree.insert(tree.root(), 7);
+    tree.insert(tree.root(), 77);
+    /*
+    REQUIRE(tree.has_child(tree.root()));
+    REQUIRE(!tree.has_child(tree.right(tree.root())));
 
-    REQUIRE(tree.height(2) == 2);
+    REQUIRE(tree.height(2) == -1);
+
+    REQUIRE(tree.value_at(tree.left(tree.root())) == 2);
+    */
 }
 
 

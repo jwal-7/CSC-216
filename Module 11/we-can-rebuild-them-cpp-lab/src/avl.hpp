@@ -7,25 +7,34 @@
 #ifndef AVL_CLASS_LIBRARY
 #define AVL_CLASS_LIBRARY
 
-template<typename T> class AVL {
+class AVL {
     
     private:
     
-    std::vector<T> data;
+    std::vector<int> data;
     int size{0};
     size_t tail{0};
 
     // calcualtes balance facto
     int bf(size_t node) 
     {
-        int left_node_height = (static_cast<int>(node.left()) == nullptr) ? -1 : static_cast<int>(node.left()).height();
-        int right_node_height = (static_cast<int>(node.right()) == nullptr) ? -1 : static_cast<int>(node.right()).height();
+        int left_node_height = (static_cast<int>(left(node) == -1) ? -1 : static_cast<int>(height(left(node))));
+        int right_node_height = (static_cast<int>(right(node) == -1) ? -1 : static_cast<int>(height(right(node))));
         return right_node_height - left_node_height;
     }
 
     void rebalance_tree()
     {
 
+    }
+
+    void fill_tree_nulls(size_t node) {
+        if (static_cast<int>(node) > size) {
+            int count = node - size;
+            for (int i = 0; i < count; i++) {
+                data.push_back(INT32_MIN);
+            }
+        }
     }
 
     public:
@@ -36,17 +45,33 @@ template<typename T> class AVL {
 
     bool is_empty() const { return size == 0; }
 
-    int height(size_t parent) const 
+    void insert(size_t node, int elem) {
+        if (!has_child(node)) { // base case: leaf
+            fill_tree_nulls(node); // FILLS TREE WITH NULLS BUT FUNCTION DNW NEED TO LOOK AT
+            data[node] = elem;
+            size++;
+            tail = data.size() - 1;
+        }
+        else {
+            if (value_at(node) < elem) {
+                insert(left(node), elem);
+            } else {
+                insert(right(node), elem);
+            }
+        }
+    }
+
+    int height(size_t parent) 
     {
-        if (parent == null) {
+        if (!has_child(parent)) {
             return -1;
         }
-        return 1 + std::max(height(parent.left(), parent.right()));
+        return 1 + std::max(static_cast<int>(height(left(parent))), static_cast<int>(height(right(parent))));
     }
 
     void swap(size_t i, size_t j) // swapping second onto first position and vice versa
     {
-        T temp = data[i];
+        int temp = data[i];
         data[i] = data[j];
         data[j] = temp; 
     }
@@ -76,14 +101,19 @@ template<typename T> class AVL {
         return (child - 1) / 2;
     }
 
-    void add_to_end(T input) 
+    bool has_child(size_t parent) 
+    {
+        return has_left(parent) || has_right(parent);
+    }
+
+    void add_to_end(int input) 
     {
         data.push_back(input);
         size++;
         tail = data.size() - 1;
     }
     
-    T end_value() 
+    int end_value() 
     {
         return data.back();
     }
@@ -93,7 +123,7 @@ template<typename T> class AVL {
         return tail;
     }
 
-    T root_value() 
+    int root_value() 
     {
         return data.front();
     }
@@ -103,7 +133,7 @@ template<typename T> class AVL {
         return 0; // root is always going to be the 0th index of the array
     }
 
-    T value_at(size_t i) 
+    int value_at(size_t i) 
     {
         return data[i];
     }

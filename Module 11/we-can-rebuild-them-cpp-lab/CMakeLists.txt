@@ -20,4 +20,4 @@ add_executable(main main.cpp src/factorial.cpp)
 add_executable(avl_tree_test tests/avl_tree_test.cpp src/avl.hpp)
 
 target_link_libraries(factorial_test PRIVATE Catch2::Catch2WithMain)
-target_link_libraries(avl_tree_test PRIAVTE Catch2::Catch2WithMain)
+target_link_libraries(avl_tree_test PRIVATE Catch2::Catch2WithMain)

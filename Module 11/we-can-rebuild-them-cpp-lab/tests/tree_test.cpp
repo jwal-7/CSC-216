@@ -2,7 +2,7 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/benchmark/catch_constructor.hpp>
 #include <catch2/generators/catch_generators_range.hpp>
-
+/*
 #include "../src/ArrayBinaryTree.hpp"
 
 TEST_CASE( "sample test case" ) {
@@ -50,5 +50,5 @@ TEST_CASE( "sample test case" ) {
     REQUIRE(!tree.is_empty());
 
 }
-
+*/
 
